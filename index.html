@@ -15,16 +15,15 @@
         /* --- ĐỊNH NGHĨA BIẾN MÀU SẮC & KHÔNG GIAN --- */
         :root {
             --primary-glow: rgba(255, 183, 219, 0.4);
-            --text-light: #ffffff;
-            --text-muted: rgba(255, 255, 255, 0.82);
-            --glass-panel: rgba(18, 11, 28, 0.72); /* Kính sẫm màu cao cấp, siêu tương phản */
-            --glass-border: rgba(255, 255, 255, 0.12);
-            --accent-pink: #ffb7db;
-            --accent-blue: #b2ccff;
-            --accent-purple: #dfc8ff;
+            --text-dark: #1e152a; /* Tông màu tím than sẫm giúp đọc chữ cực kỳ rõ nét */
+            --text-muted: rgba(30, 21, 42, 0.85);
+            --glass-panel: rgba(255, 255, 255, 0.45); /* Hộp kính trắng trong suốt cao cấp */
+            --glass-border: rgba(255, 255, 255, 0.5);
+            --accent-pink: #d13b7a; /* Tông hồng đậm tạo điểm nhấn tương phản */
+            --accent-blue: #2a6ae3; /* Tông xanh đậm dễ nhìn trên nền trắng */
+            --accent-purple: #753be3;
             --transition-bounce: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             --transition-smooth: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-            --text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
         }
 
         /* --- THIẾT LẬP CHUNG --- */
@@ -36,10 +35,10 @@
 
         body {
             font-family: 'Quicksand', sans-serif;
-            color: var(--text-light);
+            color: var(--text-dark);
             height: 100vh;
             width: 100vw;
-            overflow: hidden; /* Cố định màn hình, không cho cuộn đại trà */
+            overflow: hidden; /* Cố định màn hình, tránh cuộn đại trà */
             background-image: url('back.jpg');
             background-size: cover;
             background-position: center;
@@ -59,7 +58,7 @@
             pointer-events: none;
         }
 
-        /* --- BỐ CỤC DASHBOARD APP CHUYÊN NGHIỆP --- */
+        /* --- BỐ CỤC DASHBOARD APP --- */
         .app-container {
             position: relative;
             z-index: 1;
@@ -72,14 +71,14 @@
             gap: 20px;
         }
 
-        /* --- TẤM KÍNH CHUNG --- */
+        /* --- TẤM KÍNH TRẮNG TRONG SUỐT --- */
         .glass-panel {
             background: var(--glass-panel);
             backdrop-filter: blur(25px);
             -webkit-backdrop-filter: blur(25px);
             border: 1px solid var(--glass-border);
             border-radius: 24px;
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+            box-shadow: 0 12px 30px rgba(142, 68, 173, 0.12);
             overflow: hidden;
             transition: var(--transition-smooth);
         }
@@ -94,7 +93,7 @@
 
         .brand-section {
             text-align: center;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.08);
             padding-bottom: 20px;
             margin-bottom: 20px;
         }
@@ -103,9 +102,7 @@
             font-family: 'Playfair Display', serif;
             font-weight: 700;
             font-size: 1.25rem;
-            background: linear-gradient(135deg, var(--accent-pink), var(--accent-blue));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+            color: var(--accent-purple);
             margin-bottom: 5px;
         }
 
@@ -113,7 +110,8 @@
             font-size: 0.72rem;
             text-transform: uppercase;
             letter-spacing: 1px;
-            color: rgba(255, 255, 255, 0.5);
+            color: rgba(30, 21, 42, 0.6);
+            font-weight: 700;
         }
 
         .nav-menu {
@@ -130,12 +128,12 @@
             padding: 12px 18px;
             border-radius: 14px;
             font-size: 0.9rem;
-            font-weight: 600;
-            color: rgba(255, 255, 255, 0.7);
+            font-weight: 700;
+            color: rgba(30, 21, 42, 0.7);
             cursor: pointer;
             transition: var(--transition-smooth);
-            background: rgba(255, 255, 255, 0.02);
-            border: 1px solid rgba(255, 255, 255, 0.02);
+            background: rgba(255, 255, 255, 0.25);
+            border: 1px solid rgba(255, 255, 255, 0.3);
         }
 
         .nav-item i {
@@ -145,9 +143,10 @@
         }
 
         .nav-item:hover, .nav-item.active {
-            color: #fff;
-            background: rgba(255, 255, 255, 0.07);
-            border-color: rgba(255, 255, 255, 0.12);
+            color: var(--text-dark);
+            background: rgba(255, 255, 255, 0.6);
+            border-color: rgba(255, 255, 255, 0.6);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
         }
 
         .nav-item:hover i, .nav-item.active i {
@@ -166,19 +165,17 @@
             gap: 8px;
             width: 100%;
             padding: 12px;
-            background: linear-gradient(135deg, rgba(255, 183, 219, 0.15), rgba(178, 204, 255, 0.15));
-            border: 1.5px solid var(--accent-pink);
+            background: linear-gradient(135deg, var(--accent-pink), var(--accent-blue));
+            border: none;
             border-radius: 50px;
             font-size: 0.8rem;
             font-weight: 700;
             color: #fff;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            box-shadow: 0 6px 15px rgba(42, 106, 227, 0.25);
             transition: var(--transition-bounce);
         }
 
         .btn-sidebar-drive:hover {
-            background: linear-gradient(135deg, var(--accent-pink), var(--accent-blue));
-            color: #120a1c;
             box-shadow: 0 0 20px rgba(255, 183, 219, 0.5);
             transform: scale(1.03);
         }
@@ -208,7 +205,7 @@
             border-radius: 50%;
             padding: 5px;
             background: linear-gradient(135deg, var(--accent-pink), var(--accent-purple), var(--accent-blue));
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+            box-shadow: 0 8px 25px rgba(142, 68, 173, 0.15);
         }
 
         .profile-avatar-outer img {
@@ -216,7 +213,7 @@
             height: 100%;
             object-fit: cover;
             border-radius: 50%;
-            background: #120a1c;
+            background: #fff;
         }
 
         .profile-info h2 {
@@ -225,30 +222,29 @@
             text-transform: uppercase;
             letter-spacing: 2px;
             margin-bottom: 5px;
+            font-weight: 700;
         }
 
         .profile-info h1 {
             font-size: 2.2rem;
             margin-bottom: 12px;
-            background: linear-gradient(135deg, #ffffff, var(--accent-blue));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+            color: var(--text-dark);
         }
 
         .profile-meta-grid {
             display: flex;
-            gap: 20px;
+            gap: 15px;
             flex-wrap: wrap;
         }
 
         .meta-tag {
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.08);
+            background: rgba(255, 255, 255, 0.4);
+            border: 1px solid rgba(255, 255, 255, 0.6);
             padding: 6px 14px;
             border-radius: 10px;
             font-size: 0.8rem;
-            font-weight: 600;
-            color: var(--accent-blue);
+            font-weight: 700;
+            color: var(--accent-purple);
         }
 
         /* 2. Dự án số & Nhật ký Grid */
@@ -274,7 +270,7 @@
             background: transparent;
         }
         .scrollable-pane::-webkit-scrollbar-thumb {
-            background: rgba(255, 255, 255, 0.1);
+            background: rgba(0, 0, 0, 0.1);
             border-radius: 10px;
         }
 
@@ -291,14 +287,14 @@
             justify-content: space-between;
             padding: 18px 25px;
             cursor: pointer;
-            border: 1px solid rgba(255, 255, 255, 0.04);
-            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            background: rgba(255, 255, 255, 0.15);
             transition: var(--transition-bounce);
         }
 
         .project-folder:hover {
-            background: rgba(255, 255, 255, 0.06);
-            border-color: rgba(255, 255, 255, 0.15);
+            background: rgba(255, 255, 255, 0.55);
+            border-color: rgba(255, 255, 255, 0.6);
             transform: scale(1.015);
         }
 
@@ -316,7 +312,7 @@
         .folder-title h3 {
             font-family: 'Quicksand', sans-serif;
             font-size: 0.98rem;
-            color: #fff;
+            color: var(--text-dark);
             font-weight: 700;
             margin-bottom: 3px;
         }
@@ -324,7 +320,7 @@
         .folder-title span {
             font-size: 0.75rem;
             text-transform: uppercase;
-            color: rgba(255, 255, 255, 0.45);
+            color: rgba(30, 21, 42, 0.6);
             font-weight: 700;
             letter-spacing: 0.5px;
         }
@@ -352,7 +348,7 @@
             display: flex;
             align-items: center;
             gap: 10px;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.08);
             padding-bottom: 12px;
             margin-bottom: 15px;
         }
@@ -365,7 +361,7 @@
         .diary-header h3 {
             font-family: 'Playfair Display', serif;
             font-size: 1.15rem;
-            color: #fff;
+            color: var(--text-dark);
         }
 
         .diary-body {
@@ -379,7 +375,7 @@
             margin-bottom: 15px;
         }
 
-        /* --- COSMIC WINDOW MODALS (CỬA SỔ HỆ ĐIỀU HÀNH KÍNH MỜ - ĐỘC ĐÁO) --- */
+        /* --- COSMIC WINDOW MODALS (CỬA SỔ KÍNH TRẮNG MỜ - macOS STYLE) --- */
         .cosmic-window {
             position: fixed;
             top: 50%;
@@ -395,8 +391,8 @@
             display: flex;
             flex-direction: column;
             transition: var(--transition-bounce);
-            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.8);
-            border: 1.5px solid rgba(255, 255, 255, 0.18);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
+            border: 1.5px solid rgba(255, 255, 255, 0.6);
         }
 
         .cosmic-window.active {
@@ -407,12 +403,12 @@
 
         /* Thanh tiêu đề OS Window */
         .window-titlebar {
-            background: rgba(12, 7, 22, 0.9);
+            background: rgba(255, 255, 255, 0.6);
             padding: 12px 20px;
             display: flex;
             align-items: center;
             justify-content: space-between;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.06);
         }
 
         /* 3 Nút macOS điều hướng tinh tế */
@@ -437,23 +433,24 @@
             font-weight: 700;
             letter-spacing: 1px;
             text-transform: uppercase;
-            color: var(--accent-blue);
+            color: var(--accent-purple);
         }
 
         .window-content {
             flex-grow: 1;
             overflow-y: auto;
             padding: 35px;
-            background: rgba(15, 10, 24, 0.9);
+            background: rgba(255, 255, 255, 0.75);
             line-height: 1.7;
             font-size: 0.95rem;
+            color: var(--text-dark);
         }
 
         .window-content h2 {
             font-size: 1.6rem;
-            color: var(--accent-pink);
+            color: var(--accent-purple);
             margin-bottom: 15px;
-            border-bottom: 1.5px solid rgba(255, 255, 255, 0.1);
+            border-bottom: 1.5px solid rgba(0, 0, 0, 0.08);
             padding-bottom: 12px;
         }
 
@@ -463,6 +460,7 @@
             margin: 25px 0 10px 0;
             border-left: 3px solid var(--accent-pink);
             padding-left: 10px;
+            font-weight: 700;
         }
 
         .window-content p {
@@ -477,9 +475,9 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(8, 5, 15, 0.6);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
             z-index: 150;
             opacity: 0;
             pointer-events: none;
@@ -494,24 +492,24 @@
         /* --- GIẢ LẬP PROMPT INTERACTIVE --- */
         .prompt-playground {
             margin-top: 25px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.5);
             border-radius: 16px;
             overflow: hidden;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
         }
 
         .playground-nav {
-            background: rgba(10, 5, 18, 0.6);
+            background: rgba(255, 255, 255, 0.5);
             padding: 12px;
             display: flex;
             gap: 10px;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.06);
         }
 
         .playground-nav-btn {
             background: transparent;
             border: none;
-            color: rgba(255, 255, 255, 0.6);
+            color: rgba(30, 21, 42, 0.6);
             padding: 6px 14px;
             border-radius: 8px;
             font-family: 'Quicksand', sans-serif;
@@ -522,7 +520,7 @@
         }
 
         .playground-nav-btn.active {
-            background: rgba(255, 255, 255, 0.12);
+            background: rgba(255, 255, 255, 0.8);
             color: var(--accent-pink);
         }
 
@@ -530,7 +528,7 @@
             display: grid;
             grid-template-columns: 1fr 1fr;
             min-height: 220px;
-            background: rgba(12, 7, 22, 0.8);
+            background: rgba(240, 235, 250, 0.8); /* Màu nền oải hương nhẹ cực kỳ hợp phong cách sáng sẫm */
         }
 
         .panel-block {
@@ -540,14 +538,14 @@
         }
 
         .panel-block:first-child {
-            border-right: 1px solid rgba(255, 255, 255, 0.08);
+            border-right: 1px solid rgba(0, 0, 0, 0.06);
         }
 
         .panel-label {
             font-size: 0.75rem;
             text-transform: uppercase;
             letter-spacing: 1px;
-            color: var(--accent-blue);
+            color: var(--accent-purple);
             margin-bottom: 10px;
             display: flex;
             align-items: center;
@@ -559,7 +557,7 @@
             font-family: monospace;
             font-size: 0.88rem;
             line-height: 1.5;
-            color: rgba(255, 255, 255, 0.9);
+            color: var(--text-dark);
             white-space: pre-wrap;
             flex-grow: 1;
         }
@@ -569,7 +567,7 @@
             overflow-x: auto;
             margin: 20px 0;
             border-radius: 14px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(0, 0, 0, 0.08);
         }
 
         .source-table {
@@ -577,21 +575,21 @@
             border-collapse: collapse;
             font-size: 0.9rem;
             text-align: left;
-            background: rgba(10, 5, 20, 0.5);
+            background: rgba(255, 255, 255, 0.3);
         }
 
         .source-table th {
-            background: rgba(255, 255, 255, 0.08);
+            background: rgba(255, 255, 255, 0.5);
             padding: 14px 16px;
             font-weight: 700;
-            color: var(--accent-blue);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+            color: var(--accent-purple);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.08);
         }
 
         .source-table td {
             padding: 14px 16px;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.06);
-            color: rgba(255, 255, 255, 0.9);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+            color: var(--text-dark);
             line-height: 1.5;
         }
 
@@ -604,8 +602,8 @@
         }
 
         .feature-card {
-            background: rgba(255, 255, 255, 0.04);
-            border: 1px solid rgba(255, 255, 255, 0.08);
+            background: rgba(255, 255, 255, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.5);
             padding: 20px;
             border-radius: 16px;
             text-align: center;
@@ -620,12 +618,13 @@
         .feature-card h5 {
             font-size: 1rem;
             margin-bottom: 6px;
-            color: #fff;
+            color: var(--text-dark);
+            font-weight: 700;
         }
 
         .feature-card p {
             font-size: 0.85rem;
-            color: rgba(255, 255, 255, 0.8);
+            color: var(--text-muted);
             margin-bottom: 0;
             line-height: 1.4;
         }
@@ -639,18 +638,18 @@
         }
 
         .ethics-item {
-            background: rgba(255, 255, 255, 0.04);
+            background: rgba(255, 255, 255, 0.3);
             border-left: 4px solid var(--accent-pink);
             padding: 15px;
             border-radius: 0 14px 14px 0;
-            border-top: 1px solid rgba(255, 255, 255, 0.05);
-            border-right: 1px solid rgba(255, 255, 255, 0.05);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            border-top: 1px solid rgba(255, 255, 255, 0.4);
+            border-right: 1px solid rgba(255, 255, 255, 0.4);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.4);
             transition: var(--transition-smooth);
         }
 
         .ethics-item:hover {
-            background: rgba(255, 255, 255, 0.08);
+            background: rgba(255, 255, 255, 0.55);
             border-left-color: var(--accent-blue);
             transform: translateX(4px);
         }
@@ -658,13 +657,13 @@
         .ethics-item strong {
             display: block;
             margin-bottom: 5px;
-            color: #fff;
+            color: var(--text-dark);
             font-size: 0.95rem;
         }
 
         .ethics-item span {
             font-size: 0.85rem;
-            color: rgba(255, 255, 255, 0.85);
+            color: var(--text-muted);
             line-height: 1.4;
         }
 
@@ -727,7 +726,7 @@
 
             .panel-block:first-child {
                 border-right: none;
-                border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+                border-bottom: 1px solid rgba(0, 0, 0, 0.06);
             }
         }
     </style>
@@ -739,7 +738,7 @@
 
     <div class="app-container">
 
-        <!-- --- TRẠM ĐIỀU KHIỂN BÊN TRÁI (LEFT SIDEBAR DOCK) --- -->
+        <!-- --- TRẠM ĐIỀU ĐỒNG BÊN TRÁI (LEFT SIDEBAR DOCK) --- -->
         <aside class="sidebar glass-panel">
             <div class="brand-section">
                 <div class="brand-logo">Diệu Thảo Space</div>
@@ -882,7 +881,7 @@
     <!-- --- WINDOW BACKDROP OVERLAY --- -->
     <div class="window-overlay" id="window-overlay" onclick="closeAllWindows()"></div>
 
-    <!-- --- CÁC CỬA SỔ HỆ ĐIỀU HÀNH KÍNH MỜ (COSMIC WINDOWS) --- -->
+    <!-- --- CÁC CỬA SỔ KÍNH TRẮNG MỜ (COSMIC WINDOWS) --- -->
     
     <!-- Window Bài 1 -->
     <div class="cosmic-window glass-panel" id="window-ex1">
@@ -976,7 +975,7 @@
                     </div>
                     <div class="panel-block">
                         <div class="panel-label"><i class="fa-solid fa-robot"></i> Kết quả từ AI</div>
-                        <div id="prompt-output-display" class="code-area" style="color: var(--accent-pink); font-weight: 500;">Trả về một khối văn bản dài tóm tắt thô sơ, đôi khi bị quá rườm rà hoặc bị nhầm lẫn giữa ý phụ với luận đề cốt lõi, không có phân cấp thông tin rõ ràng.</div>
+                        <div id="prompt-output-display" class="code-area" style="color: var(--accent-pink); font-weight: 700;">Trả về một khối văn bản dài tóm tắt thô sơ, đôi khi bị quá rườm rà hoặc bị nhầm lẫn giữa ý phụ với luận đề cốt lõi, không có phân cấp thông tin rõ ràng.</div>
                     </div>
                 </div>
             </div>
@@ -1038,7 +1037,7 @@
             <p>Trong bài thực hành thiết kế sản phẩm quảng bá văn hóa du lịch: <strong>"Hà Nội mùa thu - Những trải nghiệm không thể bỏ lỡ"</strong>, mình đã đóng vai trò là đạo diễn sáng tạo, điều phối 3 cộng sự AI khác nhau (Gemini làm biên kịch nội dung, Bing Image Creator tạo họa hình và Canva AI tự động tối ưu hóa bố cục đồ họa).</p>
 
             <h4>Họa hình mùa thu từ dòng lệnh (Prompt)</h4>
-            <blockquote style="background: rgba(0, 0, 0, 0.3); border-left: 4px solid var(--accent-pink); padding: 18px; margin: 15px 0; font-style: italic; font-size: 0.95rem; color: rgba(255,255,255,0.95); border-radius: 0 8px 8px 0;">
+            <blockquote style="background: rgba(255, 255, 255, 0.4); border-left: 4px solid var(--accent-pink); padding: 18px; margin: 15px 0; font-style: italic; font-size: 0.95rem; color: var(--text-dark); border-radius: 0 8px 8px 0; border: 1px solid rgba(0,0,0,0.05);">
                 "A cinematic photo of a handful of green rice wrapped in lotus leaf, autumn vibe in Hanoi soft sunlight, highly detailed, photorealistic style."
             </blockquote>
             <p>Hình ảnh cốm xanh bọc lá sen dưới nắng ấm thu Hà Nội hiện lên tuyệt đẹp, khơi gợi được cảm xúc rất thực cho người thưởng thức.</p>
@@ -1202,7 +1201,6 @@
 
         /* --- 3. ĐIỀU HƯỚNG CUỘN TRONG WORKSPACE (DÀNH CHO CHẾ ĐỘ MOBILE) --- */
         function scrollToView(viewId) {
-            // Cập nhật trạng thái active sidebar
             const navItems = document.querySelectorAll('.nav-item');
             navItems.forEach(item => item.classList.remove('active'));
             event.currentTarget.classList.add('active');
@@ -1212,7 +1210,6 @@
                 if (window.innerWidth <= 900) {
                     element.scrollIntoView({ behavior: 'smooth', block: 'start' });
                 } else {
-                    // Nếu ở Desktop, cuộn mịn các khung phụ bên trong
                     element.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
                 }
             }
