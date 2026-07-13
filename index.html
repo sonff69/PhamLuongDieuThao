@@ -429,7 +429,7 @@
             margin-bottom: 12px;
         }
 
-        /* --- COSMIC WINDOW MODALS (CỬA SỔ HỆ ĐIỀU HÀNH KÍNH MỜ) --- */
+        /* --- COSMIC WINDOW MODALS --- */
         .cosmic-window {
             position: fixed;
             top: 50%;
@@ -520,6 +520,33 @@
             margin-bottom: 15px;
         }
 
+        /* THẺ META VI MÔ CHO MỤC TIÊU & BÀI HỌC TỪNG BÀI */
+        .content-block-meta {
+            background: rgba(255, 255, 255, 0.5);
+            border-left: 4px solid var(--accent-blue);
+            padding: 15px;
+            border-radius: 0 12px 12px 0;
+            margin: 15px 0;
+        }
+        .content-block-meta.lesson {
+            border-left-color: var(--accent-pink);
+            background: rgba(255, 240, 245, 0.6);
+        }
+        .content-block-meta h5 {
+            font-size: 0.9rem;
+            color: var(--text-dark);
+            margin-bottom: 6px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        .content-block-meta p {
+            font-size: 0.88rem;
+            line-height: 1.5;
+            color: var(--text-muted);
+            margin-bottom: 0 !important;
+        }
+
         /* Backdrop mờ nền khi mở window */
         .window-overlay {
             position: fixed;
@@ -541,7 +568,7 @@
             pointer-events: all;
         }
 
-        /* --- TƯƠNG TÁC XỊN XÒ BÀI 1: STEP-BY-STEP CONSOLE --- */
+        /* --- STEP-BY-STEP CONSOLE BÀI 1 --- */
         .step-console {
             background: rgba(255, 255, 255, 0.4);
             border: 1px solid rgba(255, 255, 255, 0.6);
@@ -656,7 +683,7 @@
             cursor: not-allowed;
         }
 
-        /* --- TƯƠNG TÁC XỊN XÒ BÀI 2: ACADEMIC SEARCH DESK --- */
+        /* --- ACADEMIC SEARCH DESK BÀI 2 --- */
         .search-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
@@ -717,7 +744,7 @@
             padding-left: 0 !important;
         }
 
-        /* --- BẢN CHẤT CẤU TRÚC PROMPT MATRIX 3x3 BÀI 3 --- */
+        /* --- PROMPT MATRIX BÀI 3 --- */
         .prompt-matrix-controller {
             display: flex;
             gap: 10px;
@@ -742,7 +769,7 @@
             border-color: transparent;
         }
 
-        /* --- ĐỒ HỌA INFOGRAPHIC TƯƠNG TÁC BÀI 6 --- */
+        /* --- ĐỒ HỌA INFOGRAPHIC BÀI 6 --- */
         .ethics-interactive-panel {
             display: grid;
             grid-template-columns: 1fr 1.2fr;
@@ -801,7 +828,7 @@
             margin-bottom: 0;
         }
 
-        /* --- RESPONSIVE CHO DI ĐỘNG --- */
+        /* --- RESPONSIVE DI ĐỘNG --- */
         @media (max-width: 900px) {
             body {
                 overflow-y: auto;
@@ -879,7 +906,7 @@
 </head>
 <body>
 
-    <!-- Canvas tạo dải hạt tinh vân lấp lánh mịn màng -->
+    <!-- Canvas dải hạt tinh vân lấp lánh mịn màng -->
     <canvas id="sparkle-canvas"></canvas>
 
     <div class="app-container">
@@ -964,7 +991,7 @@
                         <!-- Bài 2 -->
                         <div class="project-folder glass-panel" onclick="openWindow('window-ex2')">
                             <div class="folder-left">
-                                <i class="fa-solid fa-magnifying-glass-academic folder-icon"></i>
+                                <i class="fa-solid fa-magnifying-glass folder-icon"></i>
                                 <div class="folder-title">
                                     <h3>Báo cáo 2: Kiểm chứng học thuật</h3>
                                     <span>Đánh giá 11 tài liệu đa kênh</span>
@@ -1052,7 +1079,7 @@
     <!-- --- WINDOW BACKDROP OVERLAY --- -->
     <div class="window-overlay" id="window-overlay" onclick="closeAllWindows()"></div>
 
-    <!-- --- CÁC CỬA SỔ HỆ ĐIỀU HÀNH KÍNH MỜ (COSMIC WINDOWS) --- -->
+    <!-- --- CÁC CỬA SỔ KÍNH TRẮNG MỜ (COSMIC WINDOWS) --- -->
     
     <!-- Window Bài 1: Quản lý tệp tin (TƯƠNG TÁC 12 BƯỚC) -->
     <div class="cosmic-window glass-panel" id="window-ex1">
@@ -1066,6 +1093,13 @@
         </div>
         <div class="window-content scrollable-pane">
             <h2>Thao tác Cơ bản với Tệp tin & Thư mục</h2>
+
+            <!-- Thẻ Mục tiêu bài tập -->
+            <div class="content-block-meta">
+                <h5>Mục tiêu bài thực hành</h5>
+                <p>Nắm vững cấu trúc lưu trữ của hệ điều hành macOS, thành thạo các kỹ năng phân loại, sao chép, di chuyển và phục hồi dữ liệu nhằm phục vụ tiến trình quản trị thông tin học tập chuyên nghiệp.</p>
+            </div>
+            
             <p>Việc quản lý tài liệu ngăn nắp là nền móng của tư duy số học thuật. Tại bài học này, mình đã xây dựng và chuẩn hóa quy trình 12 bước cơ bản thao tác dữ liệu trực tiếp trên hệ điều hành macOS.</p>
             
             <h4>Bàn điều khiển mô phỏng 12 bước thực hành</h4>
@@ -1073,7 +1107,7 @@
                 <div class="console-progress">
                     <div class="progress-line"></div>
                     <div class="progress-line-fill" id="step-progress-fill"></div>
-                    <!-- Tạo 12 nút chỉ báo bằng JS -->
+                    <!-- 12 nút chỉ báo -->
                     <div class="step-indicator active" onclick="jumpToStep(0)">1</div>
                     <div class="step-indicator" onclick="jumpToStep(1)">2</div>
                     <div class="step-indicator" onclick="jumpToStep(2)">3</div>
@@ -1089,12 +1123,18 @@
                 </div>
                 <div class="console-body">
                     <h5 id="step-title">Bước 1: Mở Finder</h5>
-                    <p id="step-desc">Nhấp vào biểu tượng mặt cười Finder trên thanh Dock ở cuối màn hình để khởi động trình quản lý tệp tin.</p>
+                    <p id="step-desc">Nhấp vào biểu tượng mặt cười Finder trên thanh Dock ở dưới cùng màn hình để bắt đầu khởi chạy hệ thống quản lý tệp tin.</p>
                 </div>
                 <div class="console-controls">
                     <button class="console-btn" id="btn-prev-step" onclick="prevStep()" disabled>Quay lại</button>
                     <button class="console-btn" id="btn-next-step" onclick="nextStep()">Tiếp theo</button>
                 </div>
+            </div>
+
+            <!-- Thẻ Bài học rút ra -->
+            <div class="content-block-meta lesson">
+                <h5>Bài học đúc kết</h5>
+                <p>Cách đặt tên file chuẩn hóa và tổ chức thư mục phân cấp ngay từ đầu giúp mình giảm thiểu tới 80% thời gian tìm kiếm tài nguyên. Việc làm quen với các lối tắt khôi phục tệp mang lại sự an tâm tuyệt đối khi làm việc với các văn bản tiểu luận quan trọng.</p>
             </div>
         </div>
     </div>
@@ -1111,9 +1151,16 @@
         </div>
         <div class="window-content scrollable-pane">
             <h2>Tìm Kiếm & Đánh Giá Thông Tin Học Thuật</h2>
+
+            <!-- Thẻ Mục tiêu bài tập -->
+            <div class="content-block-meta">
+                <h5>Mục tiêu bài thực hành</h5>
+                <p>Thiết lập quy trình khảo sát tài liệu đa kênh, định hình bộ tiêu chí đánh giá độ tin cậy khách quan của các tài liệu học thuật liên quan đến đề tài nghiên cứu phương tiện truyền thông kỹ thuật số.</p>
+            </div>
+
             <p>Nghiên cứu về chủ đề: <strong>"Ảnh hưởng của truyền thông kỹ thuật số đối với việc thụ đắc ngôn ngữ thứ hai của sinh viên Việt Nam"</strong> đòi hỏi một bộ lọc dữ liệu chặt chẽ từ nhiều nguồn. Mình đã tiến hành rà soát hệ thống 11 nguồn tài liệu học thuật dưới đây.</p>
             
-            <h4>Bàn tra cứu dữ liệu nguồn học thuật (Nhấn để xem phân tích chi tiết)</h4>
+            <h4>Bàn tra cứu dữ liệu nguồn học thuật (Nhấn từng thẻ để xem phân tích chi tiết)</h4>
             
             <div class="search-grid" id="academic-source-grid">
                 <!-- Tải 11 tài liệu bằng JS -->
@@ -1122,6 +1169,12 @@
             <div class="source-details-panel" id="source-details-panel">
                 <h4 id="panel-source-title">Benson, P. (2019)</h4>
                 <p id="panel-source-desc">Đang tải...</p>
+            </div>
+
+            <!-- Thẻ Bài học rút ra -->
+            <div class="content-block-meta lesson" style="margin-top: 25px;">
+                <h5>Bài học đúc kết</h5>
+                <p>Google thông thường mang lại quá nhiều luồng thông tin gây nhiễu. Sử dụng các cơ sở dữ liệu chuyên ngành như Elsevier, Routledge hay hướng dẫn từ Cambridge giúp định hình khung lý thuyết cực kỳ chuẩn xác. Ma trận đánh giá độ tin cậy là lá chắn vững chắc bảo vệ tính khách quan khoa học cho đề tài.</p>
             </div>
         </div>
     </div>
@@ -1138,7 +1191,14 @@
         </div>
         <div class="window-content scrollable-pane">
             <h2>Hệ thống thiết kế câu lệnh học tập thực chiến</h2>
-            <p>Sử dụng AI trong học tập là nghệ thuật tối ưu hóa câu lệnh. Dưới đây là ma trận 3 tác vụ học tập trọng tâm tương ứng với 3 cấp độ tinh chỉnh (Cơ bản - Cải tiến - Nâng cao) mà không hề bị cắt giảm.</p>
+
+            <!-- Thẻ Mục tiêu bài tập -->
+            <div class="content-block-meta">
+                <h5>Mục tiêu bài thực hành</h5>
+                <p>Khám phá cấu trúc ngữ cảnh của câu lệnh lớn (Prompt Engineering), làm chủ các kỹ thuật gán vai trò, cung cấp ví dụ mẫu (Few-shot) và tư duy chuỗi (Chain-of-Thought) để định hướng AI tối ưu.</p>
+            </div>
+
+            <p>Sử dụng AI trong học tập là nghệ thuật tối ưu hóa câu lệnh. Dưới đây là ma trận 3 tác vụ học tập trọng tâm tương ứng với 3 cấp độ tinh chỉnh (Cơ bản - Cải tiến - Nâng cao) được trình bày đầy đủ.</p>
             
             <h4>Chọn Tác vụ để nghiên cứu cấu trúc:</h4>
             <div class="prompt-matrix-controller">
@@ -1164,6 +1224,12 @@
                     </div>
                 </div>
             </div>
+
+            <!-- Thẻ Bài học rút ra -->
+            <div class="content-block-meta lesson" style="margin-top: 25px;">
+                <h5>Bài học đúc kết</h5>
+                <p>AI phản chiếu độ sâu tư duy của chính người dùng. Thiết lập ngữ cảnh chi tiết và giới hạn phạm vi cấm (Negative Prompting) giúp nâng cấp chất lượng đầu ra của AI vượt trội, loại bỏ hoàn toàn các câu trả lời mang tính chất sáo rỗng hoặc chung chung.</p>
+            </div>
         </div>
     </div>
 
@@ -1179,6 +1245,13 @@
         </div>
         <div class="window-content scrollable-pane">
             <h2>Trạm Cộng Tác Số Dự Án Nhóm</h2>
+
+            <!-- Thẻ Mục tiêu bài tập -->
+            <div class="content-block-meta">
+                <h5>Mục tiêu bài thực hành</h5>
+                <p>Xây dựng quy trình phối hợp dự án nhóm đồng bộ trực tuyến, hiện thực hóa các ý tưởng sáng tạo thành kế hoạch triển khai cụ thể thông qua hệ sinh thái công nghệ chuyên sâu.</p>
+            </div>
+
             <p>Dự án thực hành: <strong>"Ứng dụng Trí tuệ nhân tạo (AI) trong hỗ trợ học tập cho sinh viên đại học"</strong> là một cuộc thử lửa khả năng kết hợp đa công cụ trực tuyến của nhóm mình trong vòng 1 tuần.</p>
             
             <div class="features-grid">
@@ -1201,6 +1274,12 @@
 
             <h4>Cách khắc phục sự cố giao tiếp thực tế</h4>
             <p>Trở ngại lớn nhất của nhóm mình là thông báo từ Trello qua email thường bị chậm hoặc rơi vào hòm thư rác, gây ra tình trạng lệch pha tiến độ. Bằng sự linh hoạt, nhóm đã đặt ra quy tắc phụ: Khi hoàn thành một thẻ trên Trello, thành viên bắt buộc phải gửi tin nhắn "Done" vào nhóm Zalo để thông báo. Việc bổ trợ này giúp luồng thông tin của nhóm được thông suốt hoàn toàn.</p>
+
+            <!-- Thẻ Bài học rút ra -->
+            <div class="content-block-meta lesson">
+                <h5>Bài học đúc kết</h5>
+                <p>Sự kỷ luật và cam kết giao tiếp giữa các thành viên quan trọng hơn bản thân tính năng của công cụ số. Việc tích hợp chặt chẽ giữa quản trị tác vụ (Trello) và kho tri thức (Drive) giúp nhóm mình kiểm soát rủi ro trễ hạn dự án cực kỳ hiệu quả.</p>
+            </div>
         </div>
     </div>
 
@@ -1216,6 +1295,13 @@
         </div>
         <div class="window-content scrollable-pane">
             <h2>Đồng Sáng Tạo Nội Dung Du Lịch Cùng AI</h2>
+
+            <!-- Thẻ Mục tiêu bài tập -->
+            <div class="content-block-meta">
+                <h5>Mục tiêu bài thực hành</h5>
+                <p>Khai phá sức mạnh của các mô hình AI đa phương tiện (Multimodal AI) để thiết kế một sản phẩm đồ họa thông tin trực quan, kết hợp hài hòa giữa nội dung chữ sáng tạo và thẩm mỹ đồ họa.</p>
+            </div>
+
             <p>Dự án thiết kế infographic quảng bá: <strong>"Du lịch Hà Nội mùa thu"</strong> là sản phẩm thể hiện sự kết hợp hài hòa giữa bộ ba công cụ AI: Gemini/ChatGPT làm ý tưởng biên kịch, Bing Image Creator tạo hình minh họa và Canva AI hỗ trợ bố cục tự động.</p>
 
             <h4>Dòng lệnh tạo tác nghệ thuật bằng Bing Image Creator:</h4>
@@ -1225,6 +1311,12 @@
 
             <h4>Hạn chế văn hóa của AI</h4>
             <p>Dù tạo ra hình ảnh lãng mạn, Bing Image Creator lại bộc lộ hạn chế sâu sắc khi vẽ hạt cốm xanh tròn trịa như những hạt gạo sống thông thường. Sự dẹt đặc trưng của món cốm truyền thống Việt Nam bị biến mất vì mô hình AI thiếu dữ liệu văn hóa đặc thù. Trải nghiệm này dạy cho mình bài học: <strong>AI là trợ thủ bứt phá năng suất, nhưng nhãn quan thẩm mỹ và sự nhạy cảm văn hóa độc bản của con người mới là trái tim của tác phẩm.</strong></p>
+
+            <!-- Thẻ Bài học rút ra -->
+            <div class="content-block-meta lesson">
+                <h5>Bài học đúc kết</h5>
+                <p>AI tạo sinh không thể tự động hóa hoàn toàn tư duy văn hóa. Việc phát hiện ra lỗi vẽ hạt cốm sai lệch và chủ động chỉnh sửa bố cục cho thấy người thiết kế luôn phải giữ vai trò đạo diễn độc quyền, thổi hồn văn hóa bản địa vào sản phẩm số.</p>
+            </div>
         </div>
     </div>
 
@@ -1240,6 +1332,13 @@
         </div>
         <div class="window-content scrollable-pane">
             <h2>Sử Dụng AI Có Trách Nhiệm Trong Học Thuật</h2>
+
+            <!-- Thẻ Mục tiêu bài tập -->
+            <div class="content-block-meta">
+                <h5>Mục tiêu bài thực hành</h5>
+                <p>Nghiên cứu sâu sắc ranh giới đạo đức giữa hỗ trợ hợp pháp và gian lận học thuật, kiến tạo hệ thống 6 cam kết liêm chính cá nhân khi đưa AI vào môi trường đại học.</p>
+            </div>
+
             <p>Quy chế sử dụng AI tại hệ thống các trường lớn (ĐHQGHN, HUST, NEU) đều đồng nhất: Khuyến khích ứng dụng AI làm bệ đỡ gợi ý ý tưởng, nhưng nghiêm cấm đạo văn và sao chép nguyên văn sản phẩm của mô hình.</p>
             
             <h4>Đề án thử nghiệm học tập: "Vai trò của Công nghệ Thực phẩm"</h4>
@@ -1259,8 +1358,14 @@
                 </div>
                 <div class="ethics-preview-box" id="ethics-preview-box">
                     <h5 id="ethics-preview-title">1. Hỗ trợ, không thay thế</h5>
-                    <p id="ethics-preview-desc">Chỉ sử dụng AI để gợi ý dàn ý, tìm ý tưởng hoặc kiểm tra lỗi chính tả; tuyệt đối không dùng AI để tư duy hộ hay đưa ra kết luận cuối cùng.</p>
+                    <p id="ethics-preview-desc">Chỉ sử dụng AI để gợi ý dàn ý, tìm ý tưởng hoặc kiểm tra lỗi chính tả; tuyệt đối giữ quyền làm chủ tư duy và phán quyết nội dung khoa học cuối cùng thuộc về bản thân.</p>
                 </div>
+            </div>
+
+            <!-- Thẻ Bài học rút ra -->
+            <div class="content-block-meta lesson" style="margin-top: 25px;">
+                <h5>Bài học đúc kết</h5>
+                <p>Sự liêm chính học thuật là thước đo danh dự của người nghiên cứu trong kỷ nguyên số. Việc khai báo minh bạch công cụ trợ giúp không làm giảm giá trị bài viết, trái lại nó khẳng định tư duy độc lập và trách nhiệm khoa học của bản thân.</p>
             </div>
         </div>
     </div>
@@ -1381,7 +1486,7 @@
         animateParticles();
 
 
-        /* --- 2. XỬ LÝ NGHIÊNG 3D CHO PROFILE WIDGET (MOUSE TILT) --- */
+        /* --- 2. XỬ LÝ NGHIÊNG 3D CHO PROFILE WIDGET --- */
         const profileWidget = document.getElementById('tilt-profile');
         if (profileWidget && window.innerWidth > 900) {
             profileWidget.addEventListener('mousemove', (e) => {
@@ -1401,7 +1506,7 @@
         }
 
 
-        /* --- 3. ĐIỀU HƯỚNG DƯỚI DẠNG WEB APP (SCROLL TO VIEW) --- */
+        /* --- 3. ĐIỀU HƯỚNG CUỘN TRONG WORKSPACE --- */
         function scrollToView(viewId) {
             const navItems = document.querySelectorAll('.nav-item');
             navItems.forEach(item => item.classList.remove('active'));
@@ -1414,7 +1519,7 @@
         }
 
 
-        /* --- 4. HỆ THỐNG ĐIỀU KHIỂN CỬA SỔ (COSMIC WINDOW SYSTEM) --- */
+        /* --- 4. HỆ THỐNG ĐIỀU KHIỂN CỬA SỔ --- */
         function openWindow(windowId) {
             const overlay = document.getElementById('window-overlay');
             const targetWindow = document.getElementById(windowId);
@@ -1531,7 +1636,6 @@
                 gridContainer.appendChild(card);
             });
 
-            // Load tài liệu đầu tiên làm mặc định
             selectAcademicSource(0, gridContainer.firstChild);
         }
 
@@ -1578,7 +1682,7 @@
                 },
                 advanced: {
                     input: "Vai trò: Bạn là một chuyên gia giải thích khoa học (giống như kênh YouTube Kurzgesagt), có tài năng giải thích những thứ phức tạp nhất theo cách 'ELI5' (Explain Like I'm 5).\nVí dụ về phong cách (Few-Shot):\nKhái niệm: Điện toán đám mây.\nGiải thích: Thay vì bạn phải mua một chiếc ổ cứng thật to để lưu phim và ảnh ở nhà, bạn 'thuê' một góc nhỏ trong một chiếc ổ cứng khổng lồ của Google hoặc Apple đặt ở nơi khác thông qua Internet. Bạn có thể xem ảnh từ bất kỳ đâu chỉ cần có mạng.\nNhiệm vụ: Bây giờ, hãy giải thích khái niệm 'Blockchain' theo đúng phong cách trên. Yêu cầu cấu trúc:\n1. Định nghĩa bằng 1 câu không chứa thuật ngữ kỹ thuật.\n2. Một câu chuyện ẩn dụ thực tế (Ví dụ: cuốn sổ cái chung của một ngôi làng...).\n3. Cách nó hoạt động (bước 1, bước 2, bước 3).\n4. Tại sao nó lại an toàn/quan trọng?",
-                    output: "Một bài giải thích vô cùng sinh động, hình ảnh trực quan rực rỡ hiện lên qua câu từ. Cấu trúc ẩn dụ 'cuốn sổ cái của làng' giúp người đọc nắm bắt cơ chế vận hành chỉ trong 30 giây."
+                    output: "Một bài giải thích vô cùng sinh động, hình ảnh trực quan rực rỡ hiện lên qua câu từ. Cấu trúc ẩn dụ 'cuốn sổ cái của làng' giúp người học nắm bắt cơ chế vận hành chỉ trong 30 giây."
                 }
             },
             task3: {
@@ -1624,15 +1728,14 @@
             updateMatrixPlayground();
         }
 
-        // Khởi động Prompt Matrix lần đầu
         updateMatrixPlayground();
 
 
         /* --- 8. BÀI 6: LĂNG KÍNH TƯƠNG TÁC 6 NGUYÊN TẮC ĐẠO ĐỨC --- */
         const ethicsDetails = [
             { title: "1. Hỗ trợ, không thay thế", desc: "Chỉ sử dụng AI để gợi mở ý tưởng, dựng khung dàn ý thô hoặc rà soát lỗi chính tả; tuyệt đối giữ quyền làm chủ tư duy và phán quyết nội dung khoa học cuối cùng thuộc về bản thân." },
-            { title: "2. Không sao chép nguyên văn", desc: "Cấm hành vi sao chép nguyên bản văn bản do mô hình AI tạo ra để nộp trực tiếp. Mọi văn bản đầu ra phải đi qua bộ lọc biên dịch của cá nhân." },
-            { title: "3. Cá nhân hóa sâu sắc", desc: "Luôn mổ xẻ nội dung AI cung cấp dưới lăng kính phản biện cá nhân, viết lại bằng phong cách ngôn từ riêng biệt và lồng ghép sâu sắc các ví dụ thực tiễn đời sống." },
+            { title: "2. Không sao chép nguyên bản", desc: "Cấm hành vi sao chép nguyên bản văn bản do mô hình AI tạo ra để nộp trực tiếp. Mọi văn bản đầu ra phải đi qua bộ lọc biên dịch của cá nhân." },
+            { title: "3. Cá nhân hóa sâu sắc", desc: "Luôn mổ xẻ nội dung AI cung cấp dưới lăng kính phản biện cá nhân, viết lại bằng phong cách ngôn từ riêng biệt và lồng ghép sâu sắc các ví dụ thực tế đời sống." },
             { title: "4. Minh bạch trích dẫn", desc: "Trung thực và công khai khai báo mức độ sử dụng AI ở phần chú thích bài nộp. Coi sự hỗ trợ của AI là một nguồn tham khảo cần được trích dẫn liêm chính." },
             { title: "5. Tuyệt đối không gian lận", desc: "Không lạm dụng AI để hoàn thiện các kỳ kiểm tra năng lực độc lập, bài thi trực tuyến hoặc các đề án đánh giá chuyên môn cá nhân mang tính cá thể hóa." },
             { title: "6. Định hướng trợ lý số", desc: "Xem AI là một người cộng sự đồng hành để nâng tầm năng suất, không biến AI thành công cụ làm hộ hoặc thay thế hoàn toàn năng lực tư duy tự nhiên của người học ngoại ngữ." }
