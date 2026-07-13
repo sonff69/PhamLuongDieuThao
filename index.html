@@ -7,22 +7,25 @@
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Quicksand:wght@300..700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Quicksand:wght@400..700&display=swap" rel="stylesheet">
     <!-- Font Awesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <style>
-        /* --- ĐỊNH NGHĨA BIẾN MÀU PASTEL MỘNG MƠ --- */
+        /* --- ĐỊNH NGHĨA BIẾN MÀU ĐẢM BẢO TƯƠNG PHẢN --- */
         :root {
             --primary-glow: rgba(255, 182, 193, 0.4);
             --secondary-glow: rgba(186, 85, 211, 0.3);
             --text-light: #ffffff;
-            --text-dark: #2d3238;
-            --glass-bg: rgba(255, 255, 255, 0.08);
-            --glass-border: rgba(255, 255, 255, 0.15);
-            --accent-pink: #ffd3e8;
-            --accent-blue: #d6e4ff;
-            --accent-purple: #e8dbff;
+            --text-muted: rgba(255, 255, 255, 0.85);
+            /* Chuyển sang kính tím thạch anh sẫm để tương phản hoàn hảo với chữ trắng/pastel */
+            --glass-bg: rgba(22, 15, 35, 0.65); 
+            --glass-border: rgba(255, 255, 255, 0.12);
+            --accent-pink: #ffb7db; /* Tăng độ đậm để dễ nhìn */
+            --accent-blue: #b2ccff;
+            --accent-purple: #dfc8ff;
+            --text-shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.5);
+            --text-shadow-md: 0 4px 8px rgba(0, 0, 0, 0.6);
             --transition-smooth: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
@@ -46,7 +49,7 @@
             background-repeat: no-repeat;
         }
 
-        /* Canvas hiệu ứng hạt bụi sao mộng mơ */
+        /* Canvas hiệu ứng hạt tinh vân */
         #sparkle-canvas {
             position: fixed;
             top: 0;
@@ -66,6 +69,11 @@
             font-family: 'Playfair Display', serif;
             font-weight: 700;
             letter-spacing: 0.5px;
+            text-shadow: var(--text-shadow-md);
+        }
+
+        p {
+            text-shadow: var(--text-shadow-sm);
         }
 
         a {
@@ -77,20 +85,20 @@
             list-style: none;
         }
 
-        /* --- HIỆU ỨNG GLASSMORPHISM --- */
+        /* --- HIỆU ỨNG GLASSMORPHISM SẪM MÀU (CỰC KỲ DỄ ĐỌC CHỮ) --- */
         .glass-card {
             background: var(--glass-bg);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
             border: 1px solid var(--glass-border);
-            border-radius: 20px;
-            box-shadow: 0 8px 32px 0 rgba(142, 68, 173, 0.1);
+            border-radius: 24px;
+            box-shadow: 0 10px 40px 0 rgba(0, 0, 0, 0.4);
             transition: var(--transition-smooth);
         }
 
         .glass-card:hover {
-            border-color: rgba(255, 255, 255, 0.3);
-            box-shadow: 0 12px 40px 0 rgba(255, 182, 193, 0.2);
+            border-color: rgba(255, 255, 255, 0.25);
+            box-shadow: 0 15px 50px 0 rgba(255, 182, 193, 0.15);
             transform: translateY(-4px);
         }
 
@@ -102,10 +110,10 @@
             width: 100%;
             padding: 15px 5%;
             z-index: 100;
-            background: rgba(26, 26, 26, 0.3);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            background: rgba(15, 10, 24, 0.85); /* Tối hơn để che đi các vệt sáng của ảnh nền */
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -114,9 +122,10 @@
         .logo {
             font-size: 1.3rem;
             font-weight: 700;
-            background: linear-gradient(135deg, #ffd3e8, #e8dbff);
+            background: linear-gradient(135deg, #ffb7db, #dfc8ff);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
+            text-shadow: var(--text-shadow-sm);
         }
 
         .nav-links {
@@ -127,7 +136,8 @@
 
         .nav-links a {
             font-size: 0.95rem;
-            font-weight: 500;
+            font-weight: 600;
+            text-shadow: var(--text-shadow-sm);
             position: relative;
             padding: 5px 0;
             transition: var(--transition-smooth);
@@ -154,23 +164,23 @@
 
         /* Nút Drive độc quyền */
         .btn-drive {
-            background: linear-gradient(135deg, rgba(255, 211, 232, 0.2), rgba(214, 228, 255, 0.2));
-            border: 1px solid var(--accent-pink);
+            background: linear-gradient(135deg, rgba(255, 183, 219, 0.15), rgba(178, 204, 255, 0.15));
+            border: 1.5px solid var(--accent-pink);
             padding: 8px 18px;
             border-radius: 50px;
-            font-weight: 600;
+            font-weight: 700;
             font-size: 0.85rem;
             letter-spacing: 0.5px;
             display: flex;
             align-items: center;
             gap: 8px;
-            box-shadow: 0 0 15px rgba(255, 211, 232, 0.1);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
         }
 
         .btn-drive:hover {
             background: linear-gradient(135deg, var(--accent-pink), var(--accent-blue));
-            color: var(--text-dark);
-            box-shadow: 0 0 20px rgba(255, 211, 232, 0.4);
+            color: #120a1c;
+            box-shadow: 0 0 20px rgba(255, 183, 219, 0.5);
             transform: scale(1.03);
         }
 
@@ -180,27 +190,32 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: 120px 8% 80px 8%;
+            padding: 120px 5% 80px 5%;
         }
 
         .hero-container {
             width: 100%;
             max-width: 1100px;
             display: grid;
-            grid-template-columns: 1.2fr 0.8fr;
-            gap: 50px;
+            grid-template-columns: 1.25fr 0.75fr;
+            gap: 40px;
             align-items: center;
         }
 
+        /* Hộp kính lớn ôm trọn chữ ở Hero để bảo đảm luôn dễ đọc */
+        .hero-card-wrapper {
+            padding: 40px;
+        }
+
         .hero-content h2 {
-            font-size: 1.5rem;
+            font-size: 1.4rem;
             color: var(--accent-pink);
             margin-bottom: 10px;
-            font-weight: 400;
+            font-weight: 600;
         }
 
         .hero-content h1 {
-            font-size: 3rem;
+            font-size: 2.8rem;
             line-height: 1.2;
             margin-bottom: 20px;
             background: linear-gradient(135deg, #ffffff 40%, var(--accent-blue));
@@ -209,24 +224,24 @@
         }
 
         .hero-desc {
-            font-size: 1.05rem;
+            font-size: 1rem;
             line-height: 1.6;
             margin-bottom: 30px;
-            color: rgba(255, 255, 255, 0.85);
+            color: var(--text-muted);
+            font-weight: 500;
         }
 
         .student-meta {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
             gap: 15px;
-            margin-bottom: 30px;
         }
 
         .meta-item {
             padding: 15px;
-            border-radius: 12px;
-            background: rgba(255, 255, 255, 0.04);
-            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 14px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
         }
 
         .meta-item h4 {
@@ -234,16 +249,19 @@
             text-transform: uppercase;
             color: var(--accent-blue);
             margin-bottom: 5px;
+            font-weight: 700;
+            text-shadow: none;
         }
 
         .meta-item p {
             font-size: 0.95rem;
-            font-weight: 600;
+            font-weight: 700;
+            color: #fff;
+            text-shadow: var(--text-shadow-sm);
         }
 
         /* Avatar chuyển động nhẹ */
         .hero-image-wrapper {
-            position: relative;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -251,12 +269,12 @@
 
         .avatar-glow {
             position: relative;
-            width: 280px;
-            height: 280px;
+            width: 260px;
+            height: 260px;
             border-radius: 50%;
             padding: 8px;
             background: linear-gradient(135deg, var(--accent-pink), var(--accent-purple), var(--accent-blue));
-            box-shadow: 0 0 40px rgba(186, 85, 211, 0.3);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5);
             animation: float-avatar 6s ease-in-out infinite alternate;
         }
 
@@ -265,17 +283,17 @@
             height: 100%;
             object-fit: cover;
             border-radius: 50%;
-            background: #fff;
+            background: #120a1c;
         }
 
         /* --- DRIVE PROMOTION BANNER --- */
         .drive-promo-banner {
             max-width: 1100px;
             margin: 0 auto 80px auto;
-            padding: 30px;
+            padding: 40px;
             text-align: center;
-            border: 1px solid rgba(255, 211, 232, 0.25);
-            background: linear-gradient(135deg, rgba(255, 182, 193, 0.08), rgba(186, 85, 211, 0.08));
+            border: 1px solid rgba(255, 183, 219, 0.2);
+            background: linear-gradient(135deg, rgba(22, 15, 35, 0.8), rgba(30, 20, 45, 0.8));
         }
 
         .promo-content {
@@ -284,16 +302,16 @@
         }
 
         .promo-content h3 {
-            font-size: 1.4rem;
-            margin-bottom: 10px;
+            font-size: 1.5rem;
+            margin-bottom: 12px;
             color: var(--accent-pink);
         }
 
         .promo-content p {
-            font-size: 0.95rem;
-            line-height: 1.5;
-            color: rgba(255, 255, 255, 0.8);
-            margin-bottom: 20px;
+            font-size: 0.98rem;
+            line-height: 1.6;
+            color: var(--text-muted);
+            margin-bottom: 25px;
         }
 
         .promo-content .btn-drive {
@@ -317,15 +335,16 @@
         }
 
         .section-title p {
-            font-size: 0.95rem;
+            font-size: 0.85rem;
             color: var(--accent-blue);
-            letter-spacing: 1px;
+            letter-spacing: 1.5px;
             text-transform: uppercase;
+            font-weight: 700;
         }
 
         /* --- PORTFOLIO DASHBOARD (BÀI TẬP) --- */
         #portfolio {
-            padding: 80px 8%;
+            padding: 80px 5%;
             max-width: 1200px;
             margin: 0 auto;
         }
@@ -339,29 +358,30 @@
         }
 
         .tab-btn {
-            background: rgba(255, 255, 255, 0.05);
+            background: rgba(22, 15, 35, 0.8);
             border: 1px solid rgba(255, 255, 255, 0.1);
-            color: rgba(255, 255, 255, 0.7);
-            padding: 10px 20px;
+            color: rgba(255, 255, 255, 0.8);
+            padding: 10px 22px;
             border-radius: 30px;
             font-family: 'Quicksand', sans-serif;
-            font-weight: 600;
+            font-weight: 700;
             font-size: 0.85rem;
             cursor: pointer;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
             transition: var(--transition-smooth);
         }
 
         .tab-btn:hover {
-            background: rgba(255, 255, 255, 0.12);
+            background: rgba(255, 255, 255, 0.1);
             color: #fff;
-            border-color: rgba(255, 255, 255, 0.25);
+            border-color: rgba(255, 255, 255, 0.3);
         }
 
         .tab-btn.active {
             background: linear-gradient(135deg, var(--accent-pink), var(--accent-blue));
-            color: var(--text-dark);
+            color: #120a1c;
             border-color: transparent;
-            box-shadow: 0 4px 15px rgba(255, 211, 232, 0.3);
+            box-shadow: 0 4px 15px rgba(255, 183, 219, 0.4);
         }
 
         /* Trình chuyển nội dung Tab */
@@ -382,7 +402,7 @@
         }
 
         .exercise-header {
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.12);
             padding-bottom: 20px;
             margin-bottom: 20px;
         }
@@ -400,15 +420,15 @@
             text-transform: uppercase;
             letter-spacing: 1px;
             padding: 4px 12px;
-            background: rgba(214, 228, 255, 0.15);
-            color: var(--accent-blue);
+            background: rgba(178, 204, 255, 0.2);
+            color: #d6e4ff;
             border-radius: 20px;
         }
 
         .exercise-body {
-            line-height: 1.6;
+            line-height: 1.7;
             font-size: 0.98rem;
-            color: rgba(255, 255, 255, 0.9);
+            color: rgba(255, 255, 255, 0.95);
         }
 
         .exercise-body p {
@@ -427,7 +447,7 @@
         .table-responsive {
             overflow-x: auto;
             margin: 20px 0;
-            border-radius: 12px;
+            border-radius: 14px;
             border: 1px solid rgba(255, 255, 255, 0.1);
         }
 
@@ -436,49 +456,51 @@
             border-collapse: collapse;
             font-size: 0.9rem;
             text-align: left;
-            background: rgba(0, 0, 0, 0.2);
+            background: rgba(10, 5, 20, 0.5);
         }
 
         .source-table th {
             background: rgba(255, 255, 255, 0.08);
-            padding: 12px 15px;
-            font-weight: 600;
+            padding: 14px 16px;
+            font-weight: 700;
             color: var(--accent-blue);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.12);
         }
 
         .source-table td {
-            padding: 12px 15px;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-            color: rgba(255, 255, 255, 0.8);
+            padding: 14px 16px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+            color: rgba(255, 255, 255, 0.9);
+            line-height: 1.5;
         }
 
         .source-table tr:hover {
-            background: rgba(255, 255, 255, 0.02);
+            background: rgba(255, 255, 255, 0.03);
         }
 
         .rank-badge {
             display: inline-block;
-            padding: 3px 8px;
-            border-radius: 4px;
+            padding: 4px 10px;
+            border-radius: 6px;
             font-size: 0.75rem;
             font-weight: 700;
         }
 
-        .rank-high { background: rgba(46, 204, 113, 0.2); color: #2ecc71; }
-        .rank-vhigh { background: rgba(155, 89, 182, 0.2); color: #9b59b6; }
-        .rank-mid { background: rgba(241, 196, 15, 0.2); color: #f1c40f; }
+        .rank-high { background: rgba(46, 204, 113, 0.25); color: #2ecc71; }
+        .rank-vhigh { background: rgba(155, 89, 182, 0.25); color: #d1a4ff; }
+        .rank-mid { background: rgba(241, 196, 15, 0.25); color: #f1c40f; }
 
         /* --- ĐẶC THÙ BÀI 2: GIẢ LẬP PROMPT INTERACTIVE --- */
         .prompt-playground {
             margin-top: 25px;
-            border: 1px solid rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.1);
             border-radius: 16px;
             overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.3);
         }
 
         .playground-nav {
-            background: rgba(0, 0, 0, 0.25);
+            background: rgba(10, 5, 18, 0.6);
             padding: 12px;
             display: flex;
             gap: 10px;
@@ -492,14 +514,14 @@
             padding: 6px 14px;
             border-radius: 8px;
             font-family: 'Quicksand', sans-serif;
-            font-weight: 600;
+            font-weight: 700;
             font-size: 0.8rem;
             cursor: pointer;
             transition: var(--transition-smooth);
         }
 
         .playground-nav-btn.active {
-            background: rgba(255, 255, 255, 0.1);
+            background: rgba(255, 255, 255, 0.12);
             color: var(--accent-pink);
         }
 
@@ -507,7 +529,7 @@
             display: grid;
             grid-template-columns: 1fr 1fr;
             min-height: 220px;
-            background: rgba(10, 10, 15, 0.4);
+            background: rgba(12, 7, 22, 0.8);
         }
 
         .panel-block {
@@ -529,13 +551,15 @@
             display: flex;
             align-items: center;
             gap: 6px;
+            font-weight: 700;
+            text-shadow: none;
         }
 
         .code-area {
             font-family: monospace;
-            font-size: 0.85rem;
-            line-height: 1.4;
-            color: rgba(255, 255, 255, 0.85);
+            font-size: 0.88rem;
+            line-height: 1.5;
+            color: rgba(255, 255, 255, 0.9);
             white-space: pre-wrap;
             flex-grow: 1;
         }
@@ -549,29 +573,31 @@
         }
 
         .feature-card {
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(255, 255, 255, 0.06);
-            padding: 20px;
-            border-radius: 12px;
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            padding: 24px;
+            border-radius: 16px;
             text-align: center;
         }
 
         .feature-card i {
             font-size: 2rem;
             color: var(--accent-pink);
-            margin-bottom: 12px;
+            margin-bottom: 14px;
         }
 
         .feature-card h5 {
-            font-size: 1rem;
+            font-size: 1.05rem;
             margin-bottom: 8px;
             color: #fff;
+            text-shadow: var(--text-shadow-sm);
         }
 
         .feature-card p {
-            font-size: 0.85rem;
-            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.88rem;
+            color: rgba(255, 255, 255, 0.8);
             margin-bottom: 0;
+            line-height: 1.5;
         }
 
         /* --- ĐẶC THÙ BÀI 5: QUY TẮC ĐẠO ĐỨC --- */
@@ -585,8 +611,11 @@
         .ethics-item {
             background: rgba(255, 255, 255, 0.04);
             border-left: 4px solid var(--accent-pink);
-            padding: 15px 20px;
-            border-radius: 0 12px 12px 0;
+            padding: 18px 20px;
+            border-radius: 0 16px 16px 0;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            border-right: 1px solid rgba(255, 255, 255, 0.05);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
             transition: var(--transition-smooth);
         }
 
@@ -598,19 +627,21 @@
 
         .ethics-item strong {
             display: block;
-            margin-bottom: 5px;
+            margin-bottom: 6px;
             color: #fff;
-            font-size: 0.95rem;
+            font-size: 1rem;
+            text-shadow: var(--text-shadow-sm);
         }
 
         .ethics-item span {
-            font-size: 0.85rem;
-            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.88rem;
+            color: rgba(255, 255, 255, 0.85);
+            line-height: 1.5;
         }
 
         /* --- NHẬT KÝ HÀNH TRÌNH (REFLECTION) --- */
         #reflection {
-            padding: 80px 8%;
+            padding: 80px 5%;
             max-width: 900px;
             margin: 0 auto;
         }
@@ -624,15 +655,16 @@
             gap: 20px;
             font-size: 0.85rem;
             color: var(--accent-blue);
-            margin-bottom: 15px;
+            margin-bottom: 18px;
             text-transform: uppercase;
             letter-spacing: 1px;
+            font-weight: 700;
         }
 
         .journal-content p {
-            font-size: 1rem;
+            font-size: 1.02rem;
             line-height: 1.7;
-            color: rgba(255, 255, 255, 0.9);
+            color: rgba(255, 255, 255, 0.95);
             margin-bottom: 20px;
             text-align: justify;
         }
@@ -642,29 +674,31 @@
             text-align: right;
             font-family: 'Playfair Display', serif;
             font-style: italic;
-            font-size: 1.2rem;
+            font-size: 1.25rem;
             color: var(--accent-pink);
+            text-shadow: var(--text-shadow-sm);
         }
 
         /* --- CHÂN TRANG --- */
         footer {
-            padding: 40px 5%;
-            background: rgba(10, 10, 15, 0.6);
+            padding: 45px 5%;
+            background: rgba(10, 5, 18, 0.85);
             backdrop-filter: blur(10px);
             -webkit-backdrop-filter: blur(10px);
-            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
             text-align: center;
         }
 
         footer p {
-            font-size: 0.85rem;
-            color: rgba(255, 255, 255, 0.5);
+            font-size: 0.88rem;
+            color: rgba(255, 255, 255, 0.6);
             margin-bottom: 10px;
         }
 
         footer .credits {
-            font-size: 0.75rem;
+            font-size: 0.78rem;
             color: var(--accent-pink);
+            font-weight: 600;
         }
 
         /* --- CÁC ANIMATIONS CHUNG --- */
@@ -698,6 +732,10 @@
                 text-align: center;
             }
 
+            .hero-card-wrapper {
+                padding: 25px 20px;
+            }
+
             .student-meta {
                 justify-content: center;
             }
@@ -707,8 +745,8 @@
             }
 
             .avatar-glow {
-                width: 220px;
-                height: 220px;
+                width: 210px;
+                height: 210px;
             }
 
             .playground-body {
@@ -721,7 +759,7 @@
             }
 
             .nav-links {
-                display: none; /* Thích hợp sử dụng menu di động trên thực tế */
+                display: none;
             }
         }
     </style>
@@ -749,25 +787,28 @@
         <!-- --- HERO SECTION --- -->
         <section id="home">
             <div class="hero-container">
-                <div class="hero-content">
-                    <h2>Xin chào, mình là</h2>
-                    <h1>Phạm Lương Diệu Thảo</h1>
-                    <p class="hero-desc">
-                        Là một sinh viên chuyên ngành Ngoại ngữ, mình luôn tin rằng công nghệ và trí tuệ nhân tạo không làm mất đi vẻ đẹp của ngôn từ mà trái lại, mở ra những cách tiếp cận đa chiều và thông thái hơn. Không gian nhỏ này lưu giữ những thực hành đầu tiên của mình trên hành trình làm chủ công nghệ số.
-                    </p>
-                    
-                    <div class="student-meta">
-                        <div class="meta-item">
-                            <h4>Mã số sinh viên</h4>
-                            <p>25041081</p>
-                        </div>
-                        <div class="meta-item">
-                            <h4>Ngôi trường</h4>
-                            <p>Trường Đại học Ngoại ngữ - ĐHQGHN</p>
-                        </div>
-                        <div class="meta-item" style="grid-column: span 2;">
-                            <h4>Môn học hành trình</h4>
-                            <p>Nhập môn công nghệ số và ứng dụng trí tuệ nhân tạo</p>
+                <!-- Wrapper hộp kính bao bọc bảo vệ chữ -->
+                <div class="hero-card-wrapper glass-card">
+                    <div class="hero-content">
+                        <h2>Xin chào, mình là</h2>
+                        <h1>Phạm Lương Diệu Thảo</h1>
+                        <p class="hero-desc">
+                            Là một sinh viên chuyên ngành Ngoại ngữ, mình luôn tin rằng công nghệ và trí tuệ nhân tạo không làm mất đi vẻ đẹp của ngôn từ mà trái lại, mở ra những cách tiếp cận đa chiều và thông thái hơn. Không gian nhỏ này lưu giữ những thực hành đầu tiên của mình trên hành trình làm chủ công nghệ số.
+                        </p>
+                        
+                        <div class="student-meta">
+                            <div class="meta-item">
+                                <h4>Mã số sinh viên</h4>
+                                <p>25041081</p>
+                            </div>
+                            <div class="meta-item">
+                                <h4>Ngôi trường</h4>
+                                <p>Trường Đại học Ngoại ngữ - ĐHQGHN</p>
+                            </div>
+                            <div class="meta-item" style="grid-column: span 2;">
+                                <h4>Môn học hành trình</h4>
+                                <p>Nhập môn công nghệ số và ứng dụng trí tuệ nhân tạo</p>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -809,7 +850,7 @@
 
             <!-- NỘI DUNG CHI TIẾT TỪNG BÀI TẬP -->
             <!-- Bài 1 -->
-            <div id="ex1" class="tab-content active glass-card" style="padding: 30px;">
+            <div id="ex1" class="tab-content active glass-card" style="padding: 35px;">
                 <div class="exercise-header">
                     <span class="exercise-tag">Bài số 1</span>
                     <h3>Tìm Kiếm & Đánh Giá Thông Tin Học Thuật</h3>
@@ -866,7 +907,7 @@
             </div>
 
             <!-- Bài 2 -->
-            <div id="ex2" class="tab-content glass-card" style="padding: 30px;">
+            <div id="ex2" class="tab-content glass-card" style="padding: 35px;">
                 <div class="exercise-header">
                     <span class="exercise-tag">Bài số 2</span>
                     <h3>Kỹ Thuật Viết Prompt Hiệu Quả Trong Học Tập</h3>
@@ -891,18 +932,18 @@
                             </div>
                             <div class="panel-block">
                                 <div class="panel-label"><i class="fa-solid fa-robot"></i> Kết quả phản hồi từ AI</div>
-                                <div id="prompt-output-display" class="code-area" style="color: rgba(255, 211, 232, 0.9);">Trả về một khối văn bản dài tóm tắt thô sơ, đôi khi bị quá rườm rà hoặc bị nhầm lẫn giữa ý phụ với luận đề cốt lõi, không có phân cấp thông tin rõ ràng.</div>
+                                <div id="prompt-output-display" class="code-area" style="color: var(--accent-pink); font-weight: 500;">Trả về một khối văn bản dài tóm tắt thô sơ, đôi khi bị quá rườm rà hoặc bị nhầm lẫn giữa ý phụ với luận đề cốt lõi, không có phân cấp thông tin rõ ràng.</div>
                             </div>
                         </div>
                     </div>
 
                     <h4>Bài học xương máu khi giao tiếp với AI</h4>
-                    <p>Kỹ thuật <strong>Chain-of-Thought (Chuỗi tư duy)</strong> kết hợp với <strong>Role Prompting (Gán vai trò cụ thể)</strong> là chìa khóa vàng giúp loại bỏ tối đa hiện tượng "ảo tưởng" (hallucination) thường gặp ở các mô hình AI lớn. Khi buộc AI suy nghĩ tuần tự qua từng bước có ranh giới rõ ràng, độ chính xác của phản hồi tăng lên đáng kinh ngạc.</p>
+                    <p style="margin-top: 15px;">Kỹ thuật <strong>Chain-of-Thought (Chuỗi tư duy)</strong> kết hợp với <strong>Role Prompting (Gán vai trò cụ thể)</strong> là chìa khóa vàng giúp loại bỏ tối đa hiện tượng "ảo tưởng" (hallucination) thường gặp ở các mô hình AI lớn. Khi buộc AI suy nghĩ tuần tự qua từng bước có ranh giới rõ ràng, độ chính xác của phản hồi tăng lên đáng kinh ngạc.</p>
                 </div>
             </div>
 
             <!-- Bài 3 -->
-            <div id="ex3" class="tab-content glass-card" style="padding: 30px;">
+            <div id="ex3" class="tab-content glass-card" style="padding: 35px;">
                 <div class="exercise-header">
                     <span class="exercise-tag">Bài số 3</span>
                     <h3>Sử Dụng Công Cụ Hợp Tác Và Quản Lý Dự Án Số</h3>
@@ -934,7 +975,7 @@
             </div>
 
             <!-- Bài 4 -->
-            <div id="ex4" class="tab-content glass-card" style="padding: 30px;">
+            <div id="ex4" class="tab-content glass-card" style="padding: 35px;">
                 <div class="exercise-header">
                     <span class="exercise-tag">Bài số 4</span>
                     <h3>Sáng Tạo Nội Dung Đồng Hành Cùng Trí Tuệ Nhân Tạo</h3>
@@ -944,7 +985,7 @@
 
                     <h4>Họa hình mùa thu từ dòng lệnh (Prompt)</h4>
                     <p>Dưới đây là câu lệnh mô tả chi tiết mình đã gửi tới AI tạo hình ảnh:</p>
-                    <blockquote style="background: rgba(255, 255, 255, 0.04); border-left: 3px solid var(--accent-pink); padding: 15px; margin: 15px 0; font-style: italic; font-size: 0.95rem; color: rgba(255,255,255,0.85);">
+                    <blockquote style="background: rgba(0, 0, 0, 0.3); border-left: 4px solid var(--accent-pink); padding: 18px; margin: 15px 0; font-style: italic; font-size: 0.95rem; color: rgba(255,255,255,0.95); border-radius: 0 8px 8px 0;">
                         "A cinematic photo of a handful of green rice wrapped in lotus leaf, autumn vibe in Hanoi soft sunlight, highly detailed, photorealistic style."
                     </blockquote>
                     <p>Hình ảnh cốm xanh bọc lá sen dưới nắng ấm thu Hà Nội hiện lên tuyệt đẹp, khơi gợi được cảm xúc rất thực cho người thưởng thức.</p>
@@ -955,7 +996,7 @@
             </div>
 
             <!-- Bài 5 -->
-            <div id="ex5" class="tab-content glass-card" style="padding: 30px;">
+            <div id="ex5" class="tab-content glass-card" style="padding: 35px;">
                 <div class="exercise-header">
                     <span class="exercise-tag">Bài số 5</span>
                     <h3>La Bàn Đạo Đức Trong Sử Dụng AI Nghiên Cứu</h3>
